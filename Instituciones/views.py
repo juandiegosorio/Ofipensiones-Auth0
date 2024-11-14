@@ -19,6 +19,7 @@ def institucion_list(request):
     else:
         return HttpResponse("Unauthorized User")
 
+@login_required
 def institucion_create(request):
     role = getRole(request)
     if role == "Administrador Ofipensiones":
