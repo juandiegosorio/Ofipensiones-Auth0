@@ -10,6 +10,8 @@ class InstitucionForm(forms.ModelForm):
             'telefono',
             'email',
             'website',
+            'numero de estudiantes',
+            'cantidad de cursos',
         ]
 
         labels = {
@@ -18,4 +20,6 @@ class InstitucionForm(forms.ModelForm):
             'telefono': 'Teléfono',
             'email': 'Correo Electrónico',
             'website': 'Sitio Web',
+            'numero de estudiantes': 'Número de Estudiantes',
+            'cantidad de cursos': 'Cantidad de Cursos',
         }

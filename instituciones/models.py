@@ -6,6 +6,8 @@ class Institucion(models.Model):
     telefono = models.CharField(max_length=20)
     email = models.EmailField()
     website = models.URLField()
+    numero_estudiantes = models.IntegerField()
+    cantidad_cursos = models.IntegerField()
 
     def __str__(self):
         return self.nombre
