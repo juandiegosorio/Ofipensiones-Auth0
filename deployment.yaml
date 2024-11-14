@@ -110,7 +110,7 @@ resources:
           sudo mkdir /labs
           cd /labs
           sudo git clone https://github.com/juandiegosorio/Ofipensiones-Auth0.git
-          cd ISIS2503-MonitoringApp-Auth0
+          cd Ofipensiones-Auth0
           sudo pip3 install -r requirements.txt
           sudo python3 manage.py makemigrations
           sudo python3 manage.py migrate
