@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def institucion_list(request):
     role = getRole(request)
-    if role == "Gerencia Campus":
+    if role == "Administrador Ofipensiones":
         instituciones = get_instituciones()
         context = {
             'institucion_list': instituciones
@@ -21,7 +21,7 @@ def institucion_list(request):
 
 def institucion_create(request):
     role = getRole(request)
-    if role == "Gerencia Campus":
+    if role == "Administrador Ofipensiones":
         if request.method == 'POST':
             form = InstitucionForm(request.POST)
             if form.is_valid():
