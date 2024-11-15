@@ -31,6 +31,7 @@
                             <th>Website</th>
                             <th>Numero de Estudiantes</th>
                             <th>Cantidad de Cursos</th>
+                            <th>Ver Detalle</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,10 +45,10 @@
                             <td>{{ institucion.website }}</td>
                             <td>{{ institucion.numero_estudiantes }}</td>
                             <td>{{ institucion.cantidad_cursos }}</td>
-                            <button type="button" class="btn btn-primary waves-effect waves-light"
+                            <td><button type="button" class="btn btn-primary waves-effect waves-light"
                                         onClick=" window.location.href='/institucion/{{ institucion.id }}' ">
                                     Detalle
-                            </button>
+                            </button></td>
                         </tr>
                         {% endfor %}
 
