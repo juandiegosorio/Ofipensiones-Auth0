@@ -20,11 +20,15 @@ def institucion_list(request):
         return HttpResponse("Unauthorized User")
 @login_required 
 def single_institucion(request, id=0):
-    institucion = get_institucion(id)
-    context = {
-        'institucion': institucion
-    }
-    return render(request, 'Institucion/institucion.html', context)
+    role = getRole(request)
+    if role == "Administrador Ofipensiones":
+        institucion = get_institucion(id)
+        context = {
+            'institucion': institucion
+        }
+        return render(request, 'Institucion/institucion.html', context)
+    else:
+        return HttpResponse("Unauthorized User")
 
 @login_required
 def institucion_create(request):
