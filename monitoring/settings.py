@@ -133,15 +133,3 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-LOGIN_URL = "/login/auth0"
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "https://dev-u7lpqcslelkbn3ru.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F35.238.78.11:8080"
-SOCIAL_AUTH_TRAILING_SLASH = False  # Remove end slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-u7lpqcslelkbn3ru.us.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = 'qx6HFefnI3oPC9LTc6sUhteKAkN8EIFX'
-SOCIAL_AUTH_AUTH0_SECRET = 'lBv37Y-HcotgBak2Rs2xD6xtiMn31oWgNXcEkdHo5DYMM8acr1H8xfeTfkSdNkbd'
-SOCIAL_AUTH_AUTH0_SCOPE = ['openid', 'profile', 'email', 'role']
-AUTHENTICATION_BACKENDS = {
-    'monitoring.auth0backend.Auth0',
-    'django.contrib.auth.backends.ModelBackend',
-}
