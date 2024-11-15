@@ -2,18 +2,6 @@
 {% block content %}
 
 <div class="content">
-    <div class="">
-        <div class="page-header-title">
-            <h4 class="page-title">Last Ten Measures</h4>
-            <div style="text-align:right;">
-                <button type="button" class="btn btn-success waves-effect waves-light"
-                        onClick=" window.location.href='/institucioncreate' " style="text-align:center;">+
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <br>
 
     <div class="page-content-wrapper">
         <div class="container">
@@ -21,6 +9,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
+
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
@@ -35,7 +24,6 @@
                         </thead>
                         <tbody>
 
-                        {% for institucion in institucion_list %}
                         <tr>
                             <td>{{ institucion.nombre }}</td>
                             <td>{{ institucion.direccion }}</td>
@@ -44,19 +32,14 @@
                             <td>{{ institucion.website }}</td>
                             <td>{{ institucion.numero_estudiantes }}</td>
                             <td>{{ institucion.cantidad_cursos }}</td>
-                            <button type="button" class="btn btn-primary waves-effect waves-light"
-                                        onClick=" window.location.href='/institucion/{{ institucion.id }}' ">
-                                    Detalle
-                            </button>
                         </tr>
-                        {% endfor %}
 
                         </tbody>
                     </table>
 
                     <div style="text-align:center;">
                         <button type="button" class="btn btn-primary waves-effect waves-light"
-                                onClick=" window.location.href='/' ">
+                                onClick=" window.location.href='/instituciones' ">
                             Back
                         </button>
                     </div>
@@ -66,5 +49,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -3,7 +3,7 @@ from .forms import InstitucionForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from .logic.logic_measurement import crear_institucion, get_instituciones
+from .logic.logic_institucion import crear_institucion, get_instituciones, get_institucion
 from django.contrib.auth.decorators import login_required
 #from monitoring.auth0backend import getRole
 
@@ -18,6 +18,13 @@ def institucion_list(request):
         return render(request, 'Institucion/instituciones.html', context)
     else:
         return HttpResponse("Unauthorized User")
+@login_required 
+def single_institucion(request, id=0):
+    institucion = get_institucion(id)
+    context = {
+        'institucion': institucion
+    }
+    return render(request, 'Institucion/institucion.html', context)
 
 @login_required
 def institucion_create(request):

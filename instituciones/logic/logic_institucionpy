@@ -4,6 +4,10 @@ def get_instituciones():
     queryset = Institucion.objects.all().order_by('-nombre')
     return (queryset)
 
+def get_institucion(id):
+    institucion = Institucion.objects.raw("SELECT * FROM instituciones_institucion WHERE id=%s" % id)[0]
+    return (institucion)
+
 def crear_institucion(form):
     institucion = form.save()
     institucion.save()
