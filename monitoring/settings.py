@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'instituciones',
+    'django.contrib.sites',  # Necesario para la integración de social-auth-app-django
+    'social_django',
 ]
 
 MIDDLEWARE = [

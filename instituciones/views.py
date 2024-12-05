@@ -5,6 +5,24 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from monitoring.auth0backend import getRole
 
+import requests
+from django.shortcuts import render
+
+@login_required
+def estudiantes_list(request):
+    # Hacemos una solicitud GET a la API
+    url = "http://34.55.214.111/estudiantes/list/"
+    response = requests.get(url)
+
+    # Comprobamos que la solicitud fue exitosa
+    if response.status_code == 200:
+        estudiantes = response.json()  # Asumimos que la respuesta es JSON
+    else:
+        estudiantes = []  # En caso de error, podemos enviar una lista vacía
+
+    # Pasamos los datos a la plantilla
+    return render(request, 'estudiantes_list.html', {'estudiantes': estudiantes})
+
 @login_required
 def institucion_list(request):
     role = getRole(request)
