@@ -13,8 +13,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -75,17 +76,11 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'monitoring_db',
-         'USER': 'monitoring_user',
-         'PASSWORD': 'isis2503',
-         'HOST': '10.128.0.60',
-         'PORT': '',
-     }
- }
-
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),  # Convierte Path a string
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -133,3 +128,20 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL ="https://dev-u7lpqcslelkbn3ru.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.44.132.41:8080"
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-u7lpqcslelkbn3ru.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'qx6HFefnI3oPC9LTc6sUhteKAkN8EIFX'
+SOCIAL_AUTH_AUTH0_SECRET = 'lBv37Y-HcotgBak2Rs2xD6xtiMn31oWgNXcEkdHo5DYMM8acr1H8xfeTfkSdNkbd'
+SOCIAL_AUTH_AUTH0_SCOPE = [
+ 'openid',
+ 'profile',
+ 'email',
+ 'role',
+]
+AUTHENTICATION_BACKENDS = {
+ 'monitoring.auth0backend.Auth0',
+ 'django.contrib.auth.backends.ModelBackend',
+}
